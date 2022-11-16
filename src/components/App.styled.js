@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
 
 export const Div = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-size: 40px;
+  /* font-size: 40px; */
   color: #010101;
   width: 1200px;
   margin: 0 auto;

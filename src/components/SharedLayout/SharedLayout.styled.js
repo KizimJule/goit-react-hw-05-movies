@@ -4,8 +4,11 @@ import { NavLink } from 'react-router-dom';
 export const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  /* padding: 0 16px; */
   box-sizing: border-box;
+`;
+export const Nav = styled.nav`
+  font-size: 40px;
 `;
 export const Header = styled.header`
   display: flex;
@@ -13,7 +16,6 @@ export const Header = styled.header`
   justify-content: space-between;
   gap: 12px;
   padding: 8px 0;
-  margin-bottom: 16px;
   border-bottom: 1px solid black;
   height: 80px;
 

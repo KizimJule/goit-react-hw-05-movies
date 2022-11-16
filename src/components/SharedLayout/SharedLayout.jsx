@@ -6,10 +6,10 @@ export const SharedLayout = () => {
   return (
     <SC.Container>
       <SC.Header>
-        <nav>
+        <SC.Nav>
           <SC.StyledLink to="/">Home</SC.StyledLink>
           <SC.StyledLink to="/movies">Movies</SC.StyledLink>
-        </nav>
+        </SC.Nav>
       </SC.Header>
       <Outlet />
     </SC.Container>
