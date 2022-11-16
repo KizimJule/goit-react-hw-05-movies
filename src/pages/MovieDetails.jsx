@@ -1,5 +1,5 @@
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
-import { Suspense, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getAllFilmsInfo } from '../components/Fetch/FetchAllFilmInfo';
 import * as SC from '../styled/MovieDetails.styled';
 
@@ -21,8 +21,6 @@ export const MovieDetails = () => {
   }
   const releaseDate = allFilmsInfo.release_date;
   let date = new Date(releaseDate);
-
-  // console.log(allFilmsInfo.genres);
 
   return (
     <main>
@@ -66,7 +64,7 @@ export const MovieDetails = () => {
             </li>
             <li>
               <Link
-                to="cast"
+                to="reviews"
                 state={{ from: location.state?.from ?? '/movies' }}
               >
                 Reviews
@@ -75,9 +73,7 @@ export const MovieDetails = () => {
           </ul>
         </SC.Section>
 
-        <Suspense fallback={<div>Loading subpage...</div>}>
-          <Outlet />
-        </Suspense>
+        <Outlet />
       </SC.Section>
     </main>
   );

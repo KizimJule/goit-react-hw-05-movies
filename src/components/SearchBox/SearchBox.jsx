@@ -13,17 +13,13 @@ export const SearchBox = ({ setSearchMovies }) => {
 
     const form = evt.currentTarget;
     const query = form.elements.search.value;
-
+    if (query.trim() === '') {
+      // toast.error('Please, enter the word');
+      alert('Oops!!!');
+      return;
+    }
     setSearchQuery({ query });
     form.reset();
-
-    // if (filmQuery.trim() === '') {
-    //   // toast.error('Please, enter the word');
-    //   alert('Oops!!!');
-    //   return;
-    // }
-
-    // setSearchQuery('');
   };
 
   useEffect(() => {
