@@ -1,9 +1,9 @@
-import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getAllFilmsInfo } from '../components/Fetch/FetchAllFilmInfo';
 import * as SC from '../styled/MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const [allFilmsInfo, setAllFilmsInfo] = useState();
@@ -11,10 +11,6 @@ export const MovieDetails = () => {
   useEffect(() => {
     getAllFilmsInfo(movieId).then(setAllFilmsInfo);
   }, [movieId]);
-
-  // if (!movieId) {
-  //   return;
-  // }
 
   if (!allFilmsInfo) {
     return null;
@@ -25,9 +21,7 @@ export const MovieDetails = () => {
   return (
     <main>
       <SC.Section>
-        <Link to={location.state?.from ?? '/'}>
-          <button>Go back</button>
-        </Link>
+        <SC.AButton to={location.state?.from ?? '/'}>Go back</SC.AButton>
 
         <SC.FilmCardDiv>
           <img
@@ -38,43 +32,47 @@ export const MovieDetails = () => {
           />
 
           <div>
-            <h1>
+            <SC.H1>
               {allFilmsInfo.title} ({date.getFullYear()})
-            </h1>
-            <p>{`User score: ${(allFilmsInfo.vote_average * 10).toFixed(
+            </SC.H1>
+            <SC.P>{`User score: ${(allFilmsInfo.vote_average * 10).toFixed(
               2
-            )}%`}</p>
-            <h3>Overview:</h3>
-            <p>{allFilmsInfo.overview}</p>
+            )}%`}</SC.P>
+            <SC.H2>Overview:</SC.H2>
+            <SC.P>{allFilmsInfo.overview}</SC.P>
 
-            <h3>Genres:</h3>
-            <p>{allFilmsInfo.genres.map(({ name }) => name).join(', ')}</p>
+            <SC.H2>Genres:</SC.H2>
+            <SC.P>
+              {allFilmsInfo.genres.map(({ name }) => name).join(', ')}
+            </SC.P>
           </div>
         </SC.FilmCardDiv>
-        <SC.Section>
-          <p>Additional information</p>
-          <ul>
-            <li>
-              <Link
+        <SC.SectionDiv>
+          <SC.H3>Additional information</SC.H3>
+          <SC.Ul>
+            <SC.Li>
+              <SC.LinkList
                 to="cast"
                 state={{ from: location.state?.from ?? '/movies' }}
               >
                 Cast
-              </Link>
-            </li>
-            <li>
-              <Link
+              </SC.LinkList>
+            </SC.Li>
+            <SC.Li>
+              <SC.LinkList
                 to="reviews"
                 state={{ from: location.state?.from ?? '/movies' }}
               >
                 Reviews
-              </Link>
-            </li>
-          </ul>
-        </SC.Section>
+              </SC.LinkList>
+            </SC.Li>
+          </SC.Ul>
+        </SC.SectionDiv>
 
         <Outlet />
       </SC.Section>
     </main>
   );
 };
+
+export default MovieDetails;

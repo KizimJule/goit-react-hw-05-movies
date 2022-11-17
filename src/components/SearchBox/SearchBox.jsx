@@ -1,4 +1,4 @@
-import { Wrapper, Input, Button } from './SearchBox.styled';
+import * as SC from './SearchBox.styled';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -42,15 +42,17 @@ export const SearchBox = ({ setSearchMovies }) => {
   }, [filmQuery, setSearchMovies]);
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        name="search"
-        autoComplete="off"
-        autoFocus
-        placeholder="Search movies"
-      />
-      <Button type="submit">Search</Button>
-    </Wrapper>
+    <SC.Div>
+      <SC.Form onSubmit={handleSubmit}>
+        <SC.Input
+          type="text"
+          name="search"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movies"
+        />
+        <SC.Button type="submit">Search</SC.Button>
+      </SC.Form>
+    </SC.Div>
   );
 };

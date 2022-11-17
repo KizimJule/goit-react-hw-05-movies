@@ -1,33 +1,55 @@
-import { Container } from 'components/SharedLayout/SharedLayout.styled';
 import { SearchBox } from '../components/SearchBox/SearchBox';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import * as SC from '../styled/Movies.styled';
 
-export const Movies = () => {
+const Movies = () => {
   const location = useLocation();
 
-  const [searchMovies, setSearchMovies] = useState([]);
+  const [searchMovies, setSearchMovies] = useState('');
   // console.log('searchMovies', searchMovies);
 
   return (
     <main>
-      <Container>
+      <SC.Section>
         <SearchBox setSearchMovies={setSearchMovies} />
-        <div>
-          <ul>
-            {searchMovies.map(searchFilm => (
-              <li key={searchFilm.id}>
-                <Link
-                  to={`/movies/${searchFilm.id}`}
-                  state={{ from: location }}
-                >
-                  {searchFilm.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Container>
+        {searchMovies !== '' ? (
+          <div>
+            <SC.UlSearchFilms>
+              {searchMovies.map(searchFilm => (
+                <SC.Li key={searchFilm.id}>
+                  <SC.LinkList
+                    to={`/movies/${searchFilm.id}`}
+                    state={{ from: location }}
+                  >
+                    <SC.Img
+                      src={
+                        searchFilm.poster
+                          ? 'https://image.tmdb.org/t/p/w500' +
+                            searchFilm.poster
+                          : 'https://dummyimage.com/200x300/858585/fff.jpg&text=No+photo'
+                      }
+                      alt={searchFilm.title}
+                      width="200"
+                      height="240"
+                    />
+                    <SC.DivDescr>
+                      <SC.PAboutFilm>{searchFilm.title} </SC.PAboutFilm>
+                      <SC.PAboutFilm>
+                        Rating: {searchFilm.vote_average}
+                      </SC.PAboutFilm>
+                    </SC.DivDescr>
+                  </SC.LinkList>
+                </SC.Li>
+              ))}
+            </SC.UlSearchFilms>
+          </div>
+        ) : (
+          <SC.P>No movies... Try to find something</SC.P>
+        )}
+      </SC.Section>
     </main>
   );
 };
+
+export default Movies;

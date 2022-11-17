@@ -1,8 +1,9 @@
 import { getCast } from '../Fetch/FetchCast';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import * as SC from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
 
@@ -15,12 +16,12 @@ export const Cast = () => {
   }
   // console.log(cast.cast);
   return (
-    <section>
+    <SC.SectionDiv>
       {cast.cast.length > 0 ? (
-        <ul>
+        <SC.UlCast>
           {cast.cast.map(({ id, profile_path, name, character }) => (
-            <li key={id}>
-              <img
+            <SC.Li key={id}>
+              <SC.Img
                 src={
                   profile_path
                     ? 'https://image.tmdb.org/t/p/w500' + profile_path
@@ -28,15 +29,20 @@ export const Cast = () => {
                 }
                 alt={name}
                 width="200"
+                height="240"
               />
-              <p>{name}</p>
-              <p>Character: {character}</p>
-            </li>
+              <SC.DivDescr>
+                <SC.P>{name}</SC.P>
+                <SC.PCharacter>Character: {character}</SC.PCharacter>
+              </SC.DivDescr>
+            </SC.Li>
           ))}
-        </ul>
+        </SC.UlCast>
       ) : (
         <p>No cast</p>
       )}
-    </section>
+    </SC.SectionDiv>
   );
 };
+
+export default Cast;

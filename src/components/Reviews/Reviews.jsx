@@ -1,8 +1,9 @@
 import { getReviews } from '../Fetch/FetchReviews';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import * as SC from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
@@ -15,19 +16,21 @@ export const Reviews = () => {
     return null;
   }
   return (
-    <section>
+    <SC.SectionDiv>
       {reviews.length > 0 ? (
-        <ul>
+        <SC.UlReviews>
           {reviews.map(({ id, author, content }) => (
-            <li key={id}>
-              <p>Author: {author}</p>
-              <p>{content}</p>
-            </li>
+            <SC.ReviewLi key={id}>
+              <SC.H3>Author: {author}</SC.H3>
+              <SC.P>{content}</SC.P>
+            </SC.ReviewLi>
           ))}
-        </ul>
+        </SC.UlReviews>
       ) : (
         <p>We don't have reviews for this movie</p>
       )}
-    </section>
+    </SC.SectionDiv>
   );
 };
+
+export default Reviews;
