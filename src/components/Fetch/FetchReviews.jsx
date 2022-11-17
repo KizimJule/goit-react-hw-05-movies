@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 
 import { KEY, BASE_URL } from './Key-url';
 
-export async function getAllFilmsInfo(movieId) {
-  const url = `${BASE_URL}/movie/${movieId}?api_key=${KEY}`;
+export async function getReviews(movieId) {
+  const url = `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}`;
   const { data } = await axios.get(url);
-  return data;
+  return data.results;
 }
-
-getAllFilmsInfo.propTypes = {
-  page: PropTypes.number,
+getReviews.propTypes = {
   movieId: PropTypes.number,
 };

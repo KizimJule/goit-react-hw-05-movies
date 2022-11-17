@@ -13,7 +13,7 @@ export const Cast = () => {
   if (!cast) {
     return null;
   }
-  console.log(cast.cast);
+  // console.log(cast.cast);
   return (
     <section>
       {cast.cast.length > 0 ? (

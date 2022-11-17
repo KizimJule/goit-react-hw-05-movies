@@ -7,23 +7,9 @@ export async function getSearchFilm(query, page = 1) {
   const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&query=${query}`;
   const response = await axios.get(url);
 
-  console.log(response.data, '----data111');
+  // console.log(response.data, '----data111');
   return response.data.results;
 }
-
-// export const getSearchFilm = async query => {
-//   const response = await axios('/search/movie', {
-//     params: {
-//       api_key: KEY,
-//       include_adult: false,
-//       query,
-//     },
-//   });
-//   console.log(response);
-//   return response.data.results;
-// };
-
-getSearchFilm('Bond');
 
 getSearchFilm.propTypes = {
   query: PropTypes.string,

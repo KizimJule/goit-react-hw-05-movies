@@ -7,7 +7,7 @@ export const Movies = () => {
   const location = useLocation();
 
   const [searchMovies, setSearchMovies] = useState([]);
-  console.log('searchMovies', searchMovies);
+  // console.log('searchMovies', searchMovies);
 
   return (
     <main>
