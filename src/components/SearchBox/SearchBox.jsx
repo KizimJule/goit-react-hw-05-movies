@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getSearchFilm } from '../Fetch/FetchSearchFilm';
+import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Loader } from 'components/Loader/Loader';
 
 export const SearchBox = ({ setSearchMovies }) => {
   const [searchQuery, setSearchQuery] = useSearchParams();
@@ -15,7 +18,7 @@ export const SearchBox = ({ setSearchMovies }) => {
     const query = form.elements.search.value;
     if (query.trim() === '') {
       // toast.error('Please, enter the word');
-      alert('Oops!!!');
+      alert('Oops!!! Enter the film name');
       return;
     }
     setSearchQuery({ query });
@@ -53,6 +56,9 @@ export const SearchBox = ({ setSearchMovies }) => {
         />
         <SC.Button type="submit">Search</SC.Button>
       </SC.Form>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </SC.Div>
   );
 };

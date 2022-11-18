@@ -16,29 +16,27 @@ const Movies = () => {
         {searchMovies !== '' ? (
           <div>
             <SC.UlSearchFilms>
-              {searchMovies.map(searchFilm => (
-                <SC.Li key={searchFilm.id}>
-                  <SC.LinkList
-                    to={`/movies/${searchFilm.id}`}
-                    state={{ from: location }}
-                  >
+              {searchMovies.map(({ id, poster, title, vote_average }) => (
+                <SC.Li key={id}>
+                  <SC.LinkList to={`/movies/${id}`} state={{ from: location }}>
                     <SC.Img
                       src={
-                        searchFilm.poster &&
-                        searchFilm.poster !==
-                          'https://image.tmdb.org/t/p/w500null'
-                          ? searchFilm.poster
+                        poster &&
+                        poster !== 'https://image.tmdb.org/t/p/w500null'
+                          ? poster
                           : 'https://dummyimage.com/200x300/858585/fff.jpg&text=No+photo'
                       }
-                      alt={searchFilm.title}
+                      alt={title}
                       width="200"
                       height="240"
                     />
                     <SC.DivDescr>
-                      <SC.PAboutFilm>{searchFilm.title} </SC.PAboutFilm>
-                      <SC.PAboutFilm>
-                        Rating: {searchFilm.vote_average}
-                      </SC.PAboutFilm>
+                      <SC.PAboutFilm>{title} </SC.PAboutFilm>
+                      {vote_average !== 0 && (
+                        <SC.PAboutFilm>
+                          Rating: {vote_average.toFixed(1)}
+                        </SC.PAboutFilm>
+                      )}
                     </SC.DivDescr>
                   </SC.LinkList>
                 </SC.Li>

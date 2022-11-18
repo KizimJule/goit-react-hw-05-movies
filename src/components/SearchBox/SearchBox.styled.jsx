@@ -13,16 +13,15 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  padding: 8px;
+  padding: 6px 6px 6px 10px;
   border-radius: 8px;
-  font: inherit;
-  font-size: 28px;
+  font-size: 22px;
   width: 360px;
 `;
 
 export const Button = styled.button`
-  font-size: 24px;
-  padding: 12px 16px;
+  font-size: 18px;
+  padding: 10px 16px;
   border-radius: 8px;
   border: 1px solid #000;
   text-decoration: none;

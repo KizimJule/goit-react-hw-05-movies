@@ -7,6 +7,12 @@ export const Section = styled.section`
   max-width: 1280px;
   border-bottom: 1px solid black;
 `;
+export const TitleH1 = styled.h1`
+  margin: 0 0 20px 0;
+  font-size: 30px;
+  text-align: center;
+`;
+
 export const UlPopFilms = styled.ul`
   display: flex;
   flex-wrap: wrap;

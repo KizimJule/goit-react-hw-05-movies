@@ -16,27 +16,28 @@ const Home = () => {
   return (
     <main>
       <SC.Section>
+        <SC.TitleH1>Trending Today</SC.TitleH1>
         <SC.UlPopFilms>
-          {popFilms.map(popFilm => (
-            <SC.Li key={popFilm.id}>
-              <SC.LinkList
-                to={`/movies/${popFilm.id}`}
-                state={{ from: location }}
-              >
-                {' '}
+          {popFilms.map(({ id, poster_path, title, vote_average }) => (
+            <SC.Li key={id}>
+              <SC.LinkList to={`/movies/${id}`} state={{ from: location }}>
                 <SC.Img
                   src={
-                    popFilm.poster_path
-                      ? 'https://image.tmdb.org/t/p/w500' + popFilm.poster_path
+                    poster_path
+                      ? 'https://image.tmdb.org/t/p/w500' + poster_path
                       : 'https://dummyimage.com/200x300/858585/fff.jpg&text=No+photo'
                   }
-                  alt={popFilm.title}
+                  alt={title}
                   width="200"
                   height="240"
                 />
                 <SC.DivDescr>
-                  <SC.PAboutFilm>{popFilm.title} </SC.PAboutFilm>
-                  <SC.PAboutFilm>Rating: {popFilm.vote_average}</SC.PAboutFilm>
+                  <SC.PAboutFilm>{title} </SC.PAboutFilm>
+                  {vote_average !== 0 && (
+                    <SC.PAboutFilm>
+                      Rating: {vote_average.toFixed(1)}
+                    </SC.PAboutFilm>
+                  )}
                 </SC.DivDescr>
               </SC.LinkList>
             </SC.Li>
