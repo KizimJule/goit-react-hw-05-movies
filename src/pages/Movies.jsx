@@ -24,9 +24,10 @@ const Movies = () => {
                   >
                     <SC.Img
                       src={
-                        searchFilm.poster
-                          ? 'https://image.tmdb.org/t/p/w500' +
-                            searchFilm.poster
+                        searchFilm.poster &&
+                        searchFilm.poster !==
+                          'https://image.tmdb.org/t/p/w500null'
+                          ? searchFilm.poster
                           : 'https://dummyimage.com/200x300/858585/fff.jpg&text=No+photo'
                       }
                       alt={searchFilm.title}
@@ -46,6 +47,9 @@ const Movies = () => {
           </div>
         ) : (
           <SC.P>No movies... Try to find something</SC.P>
+        )}
+        {searchMovies.length === 0 && searchMovies !== '' && (
+          <SC.P>There is no movies with that name</SC.P>
         )}
       </SC.Section>
     </main>

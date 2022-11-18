@@ -53,7 +53,7 @@ export const P = styled.p`
 `;
 export const Img = styled.img`
   width: 100%;
-  height: auto;
+  height: 300px;
   display: block;
   border-radius: 5px;
 `;

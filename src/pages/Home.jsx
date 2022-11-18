@@ -11,7 +11,7 @@ const Home = () => {
     getPopFilms().then(setPopFilms);
   }, []);
 
-  console.log('popFilms', popFilms);
+  // console.log('popFilms', popFilms);
 
   return (
     <main>
