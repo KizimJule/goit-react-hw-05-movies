@@ -1,6 +1,7 @@
-import { SearchBox } from '../components/SearchBox/SearchBox';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import { SearchBox } from '../components/SearchBox/SearchBox';
 import * as SC from '../styled/Movies.styled';
 
 const Movies = () => {
@@ -46,6 +47,7 @@ const Movies = () => {
         ) : (
           <SC.P>No movies... Try to find something</SC.P>
         )}
+
         {searchMovies.length === 0 && searchMovies !== '' && (
           <SC.P>There is no movies with that name</SC.P>
         )}

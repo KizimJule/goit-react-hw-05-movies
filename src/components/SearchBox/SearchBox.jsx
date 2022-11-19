@@ -1,8 +1,8 @@
-import * as SC from './SearchBox.styled';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { getSearchFilm } from '../Fetch/FetchSearchFilm';
+import * as SC from './SearchBox.styled';
+import { getSearchFilm } from '../Fetch/FetchFilms';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Loader } from 'components/Loader/Loader';

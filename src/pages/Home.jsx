@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getPopFilms } from '../components/Fetch/Fetch-popular-films';
+
+import { getPopFilms } from '../components/Fetch/FetchFilms';
 import * as SC from '../styled/Home.styled';
 
 const Home = () => {

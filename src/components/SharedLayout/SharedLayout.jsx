@@ -1,7 +1,7 @@
-import * as SC from './SharedLayout.styled';
-
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+
+import * as SC from './SharedLayout.styled';
 import { Loader } from 'components/Loader/Loader';
 
 export const SharedLayout = () => {

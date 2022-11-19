@@ -1,6 +1,7 @@
 import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getAllFilmsInfo } from '../components/Fetch/FetchAllFilmInfo';
+
+import { getAllFilmsInfo } from '../components/Fetch/FetchFilms';
 import * as SC from '../styled/MovieDetails.styled';
 
 const MovieDetails = () => {

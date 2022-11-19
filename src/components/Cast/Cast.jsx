@@ -1,4 +1,4 @@
-import { getCast } from '../Fetch/FetchCast';
+import { getCast } from '../Fetch/FetchFilms';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as SC from './Cast.styled';
@@ -14,7 +14,7 @@ const Cast = () => {
   if (!cast) {
     return null;
   }
-  // console.log(cast.cast);
+
   return (
     <SC.SectionDiv>
       {cast.cast.length > 0 ? (

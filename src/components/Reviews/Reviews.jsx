@@ -1,6 +1,7 @@
-import { getReviews } from '../Fetch/FetchReviews';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
+import { getReviews } from '../Fetch/FetchFilms';
 import * as SC from './Reviews.styled';
 
 const Reviews = () => {
@@ -10,11 +11,11 @@ const Reviews = () => {
   useEffect(() => {
     getReviews(movieId).then(setReviews);
   }, [movieId]);
-  //   console.log(reviews, 'reviews');
 
   if (!reviews) {
     return null;
   }
+
   return (
     <SC.SectionDiv>
       {reviews.length > 0 ? (
